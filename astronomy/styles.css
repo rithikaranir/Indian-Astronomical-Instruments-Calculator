@@ -1,4 +1,26 @@
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 0;
+    background: linear-gradient(120deg, rgba(0,0,0,0.2) 0%, rgba(50,50,50,0.2) 50%, rgba(0,0,0,0.2) 100%);
+    animation: bgMove 12s ease-in-out infinite alternate;
+}
+
+@keyframes bgMove {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}
 /* Reset and base styles */
+
 * {
     margin: 0;
     padding: 0;
@@ -7,27 +29,31 @@
 
 body {
     font-family: 'Inter', sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    min-height: 100vh;
+    background: #111;
+    min-height: 70vh;
     color: #333;
     line-height: 1.6;
+    position: relative;
 }
 
+
+
 .container {
-    max-width: 1400px;
+    
     margin: 0 auto;
     padding: 20px;
+    background-image: url("https://static.vecteezy.com/system/resources/previews/015/974/067/non_2x/starry-night-landscape-in-forest-scenery-illustration-vector.jpg");
+    background-size: cover;
 }
 
 /* Header styles */
 .header {
     text-align: center;
     margin-bottom: 40px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(15px);
     border-radius: 20px;
     padding: 40px 20px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid white;
 }
 
 .header-content {
@@ -54,37 +80,49 @@ body {
     font-weight: 300;
 }
 
-/* Main content */
 .main-content {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap: 30px;
     margin-bottom: 40px;
+    width: 100%;
 }
 
-/* Input section */
 .input-section {
     display: flex;
     flex-direction: column;
+    border-radius: 20px;
+    backdrop-filter: blur(7px);
+    border: 1px solid white;
+    width: 100%;
+    max-width: 600px;
+    min-height: 420px;
+    margin: 0 auto 30px auto;
+    padding: 32px 28px;
 }
 
-.input-card {
-    background: white;
+.results-section {
+    background: none;
+    backdrop-filter: blur(7px);
     border-radius: 20px;
     padding: 30px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.2);
+    margin: 0 auto;
 }
 
 .input-card h2 {
-    color: #4a5568;
+    color: #fff;
     margin-bottom: 25px;
+    padding: 32px 28px;
     font-size: 1.5rem;
     font-weight: 600;
 }
 
 .input-card h2 i {
-    color: #667eea;
+    color: #fff;
     margin-right: 10px;
 }
 
@@ -101,10 +139,10 @@ body {
 
 .input-group input {
     width: 100%;
-    padding: 12px 16px;
+    padding: 18px 22px;
     border: 2px solid #e2e8f0;
-    border-radius: 10px;
-    font-size: 1rem;
+    border-radius: 12px;
+    font-size: 1.15rem;
     transition: all 0.3s ease;
     background: #f8fafc;
 }
@@ -112,7 +150,7 @@ body {
 .input-group input:focus {
     outline: none;
     border-color: #667eea;
-    background: white;
+    backdrop-filter: blur(7px);
     box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
@@ -144,8 +182,8 @@ body {
 }
 
 .preset-btn:hover {
-    border-color: #667eea;
-    background: #667eea;
+    
+    background:black;
     color: white;
     transform: translateY(-2px);
 }
@@ -153,7 +191,7 @@ body {
 .calculate-btn {
     width: 100%;
     padding: 15px 20px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background:black;
     color: white;
     border: none;
     border-radius: 12px;
@@ -166,7 +204,7 @@ body {
 
 .calculate-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.4);
 }
 
 .calculate-btn i {
@@ -174,13 +212,7 @@ body {
 }
 
 /* Results section */
-.results-section {
-    background: white;
-    border-radius: 20px;
-    padding: 30px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
+
 
 .results-section h2 {
     color: #4a5568;
@@ -196,8 +228,11 @@ body {
 
 .yantra-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
     gap: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
 }
 
 .yantra-card {
@@ -347,4 +382,19 @@ body {
 
 .description strong {
     color: #2d3748;
+}
+.input-group label {
+    color: white;
+}
+.preset-locations h3 {
+    color: white;
+}
+.results-section h2 {
+    color: white;
+}
+.yantra-card {
+    background-color:black;
+}
+.dimension-label,.description p,.yantra-card h3,.description strong {
+    color: white;
 }
